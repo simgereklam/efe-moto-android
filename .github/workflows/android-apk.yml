@@ -23,9 +23,12 @@ jobs:
       - name: Build Debug APK
         run: gradle assembleDebug
 
+      - name: APK Dosyasını Ara (Loglarda Göreceğiz)
+        run: find . -name "*.apk"
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: MotoDiagPro-APK
-          # BÜTÜN KLASÖRLERİ TARA VE .APK BULAN HER DOSYAYI YÜKLE
-          path: "**/*.apk"
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
