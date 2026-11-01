@@ -20,9 +20,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      # NOT: android-actions/setup-android@v3 tamamen kaldırıldı. 
-      # GitHub sunucularında Android SDK zaten hazır kurulu geliyor, bu yüzden ekstra kuruluma gerek yok.
-
       - name: Build Debug APK
         run: gradle assembleDebug
 
@@ -30,4 +27,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: MotoDiagPro-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          # BÜTÜN KLASÖRLERİ TARA VE .APK BULAN HER DOSYAYI YÜKLE
+          path: "**/*.apk"
